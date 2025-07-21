@@ -43,10 +43,10 @@ export function useTranslation() {
     translatedMap: Term[]
   ): TranslatedTerm[] => {
     return Object.entries(terms).map(([key, term]) => {
-      console.log(key, term, "term", translatedMap[key]);
       return {
         zh_CN: translatedMap[key],
         en_US: term,
+        zh_HK: term,
         code: `${prefix}_${term.key}`,
         type: "front",
         group: prefix,
