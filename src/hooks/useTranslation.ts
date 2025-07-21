@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { translateTerms } from "@/lib/api";
 import { Term, TranslatedTerm } from "@/types";
-
+import { toTraditional } from "chinese-simple2traditional";
 export function useTranslation() {
   const [isLoading, setIsLoading] = useState(false);
   const [translatedTerms, setTranslatedTerms] = useState<TranslatedTerm[]>([]);
@@ -46,7 +46,7 @@ export function useTranslation() {
       return {
         zh_CN: translatedMap[key],
         en_US: term,
-        zh_HK: term,
+        zh_HK: toTraditional(translatedMap[key]),
         code: `${prefix}_${term.key}`,
         type: "front",
         group: prefix,
@@ -71,11 +71,11 @@ export function useTranslation() {
       }
 
       const translationResponses = await translateTerms(generatedTerms);
+      console.log(translationResponses, "translationResponses");
       const translationObj = new Function(`return ${translationResponses}`)();
       const defaultObj = new Function(`return ${defaultTerms}`)();
       const translatedMap = new Function(`return ${generatedTerms}`)();
       const uniqueTerms = { ...translationObj, ...translatedTerms };
-      console.log(translationResponses, "99999", uniqueTerms);
 
       const processedTerms = processTerms(
         uniqueTerms,

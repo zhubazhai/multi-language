@@ -10,6 +10,7 @@
     "build": "rm -rf dist && pnpm build:client && cp package.json dist && touch dist/build.flag"
   },
   "dependencies": {
+    "chinese-simple2traditional": "^2.2.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.9.2",
     "react": "^18.3.1",
@@ -24,15 +25,15 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "ag-grid-community": "^32.0.0",
+    "ag-grid-react": "^32.0.0",
     "autoprefixer": "^10.4.21",
+    "axios": "^1.7.7",
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "ag-grid-react": "^32.0.0",
-    "ag-grid-community": "^32.0.0",
-    "xlsx": "^0.18.5",
-    "axios": "^1.7.7"
+    "xlsx": "^0.18.5"
   }
 }
